@@ -19,17 +19,33 @@ const baseURL: string = (import.meta as any).env.BASE_URL;
 export const router = new Router({
     routes: [
       {
-        path: resolveRouterPath(),
+        path: "/",
         title: 'Home',
         render: () => html`<app-home></app-home>`
       },
       {
-        path: resolveRouterPath('about'),
-        title: 'About',
+        path: '/forward-and-backward',
+        title: 'Forward and Backward',
         plugins: [
-          lazy(() => import('./pages/app-about/app-about.js')),
+          lazy(() => import('./pages/forward-and-backward.js')),
         ],
-        render: () => html`<app-about></app-about>`
+        render: () => html`<forward-and-backward></forward-and-backward>`
+      },
+      {
+        path: '/container-transform',
+        title: 'Container Transform',
+        plugins: [
+          lazy(() => import('./pages/container-transform.js')),
+        ],
+        render: () => html`<container-transform></container-transform>`
+      },
+      {
+        path: '/beyond-bounds',
+        title: 'Beyond Screen Bounds',
+        plugins: [
+          lazy(() => import('./pages/beyond-bounds.js')),
+        ],
+        render: () => html`<beyond-bounds></beyond-bounds>`
       }
     ]
   });

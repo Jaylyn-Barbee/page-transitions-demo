@@ -23,16 +23,7 @@ export class AppIndex extends LitElement {
   }
 
   firstUpdated() {
-    router.addEventListener('route-changed', () => {
-      if ("startViewTransition" in document) {
-        return (document as any).startViewTransition(() => {
-          this.requestUpdate();
-        });
-      }
-      else {
-        this.requestUpdate();
-      }
-    });
+
   }
 
   render() {
