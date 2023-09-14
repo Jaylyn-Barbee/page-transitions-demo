@@ -6,7 +6,7 @@ import { router } from '../router';
 const pageMap: { [id: string] : string; } = {
     "Home": "/",
     "Container Transform": "/container-transform",
-    "Forward and Backward": "/forward-and-backward",
+    "Forward and Backward": "/forward-page",
     "Beyond Screen Bounds": "/beyond-bounds"
 }
 
@@ -32,6 +32,8 @@ export class TopLevelNav extends LitElement {
         .nav-button:hover {
           cursor: pointer;
         }
+
+
       `
     ];
   }
@@ -44,15 +46,17 @@ export class TopLevelNav extends LitElement {
   }
 
   async handlePageChange(page: string){
-    await router.navigate(page);
-    /* if ("startViewTransition" in document) {
+
+    if ("startViewTransition" in document) {
       return (document as any).startViewTransition(() => {
-        this.requestUpdate();
+        router.navigate(page);
+        (document.querySelector("app-index") as LitElement).requestUpdate();
       });
+
+    } else {
+      router.navigate(page);
+      (document.querySelector("app-index") as LitElement).requestUpdate();
     }
-    else {
-      this.requestUpdate();
-    } */
 
   }
 

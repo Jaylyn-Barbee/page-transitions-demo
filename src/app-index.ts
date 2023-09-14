@@ -22,9 +22,7 @@ export class AppIndex extends LitElement {
     super();
   }
 
-  firstUpdated() {
 
-  }
 
   render() {
     // router config can be round in src/router.ts

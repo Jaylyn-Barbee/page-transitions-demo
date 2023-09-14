@@ -44,7 +44,9 @@ export class AppHome extends LitElement {
   render() {
     return html`
       <div class="wrapper">
-        <div class="rainbow"></div>
+        <div class="rainbow">
+
+        </div>
         <top-level-nav></top-level-nav>
       </div>
     `;

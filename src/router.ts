@@ -24,12 +24,20 @@ export const router = new Router({
         render: () => html`<app-home></app-home>`
       },
       {
-        path: '/forward-and-backward',
-        title: 'Forward and Backward',
+        path: '/forward-page',
+        title: 'Forward',
         plugins: [
-          lazy(() => import('./pages/forward-and-backward.js')),
+          lazy(() => import('./pages/forward-page.js')),
         ],
-        render: () => html`<forward-and-backward></forward-and-backward>`
+        render: () => html`<forward-page></forward-page>`
+      },
+      {
+        path: '/backward-page',
+        title: 'Backward',
+        plugins: [
+          lazy(() => import('./pages/backward-page.js')),
+        ],
+        render: () => html`<backward-page></backward-page>`
       },
       {
         path: '/container-transform',
@@ -38,6 +46,17 @@ export const router = new Router({
           lazy(() => import('./pages/container-transform.js')),
         ],
         render: () => html`<container-transform></container-transform>`
+      },
+      {
+        path: '/album-details/:name/:index',
+        //@ts-ignore
+        title: ({params}) => `${params.name} Details`,
+        plugins: [
+          lazy(() => import('./pages/album-details.js')),
+
+        ],
+        //@ts-ignore
+        render: ({params}) => html`<album-details id="${params.name}"></album-details>`
       },
       {
         path: '/beyond-bounds',
